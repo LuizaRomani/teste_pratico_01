@@ -1,6 +1,8 @@
 import fastifyCors from '@fastify/cors'
 import { fastify } from 'fastify'
 import { hasZodFastifySchemaValidationErrors, serializerCompiler, validatorCompiler } from 'fastify-type-provider-zod'
+import { clickLinkRoute } from './routes/click-link-route'
+import { countClicksRoute } from './routes/count-clicks-route'
 import { createLinkRout } from './routes/create-link-route'
 import { deleteLinkRoute } from './routes/delete-link-route'
 import { listLinksRoute } from './routes/list-links-route'
@@ -28,6 +30,8 @@ server.register(fastifyCors, { origin: '*' })
 server.register(createLinkRout)
 server.register(listLinksRoute)
 server.register(deleteLinkRoute)
+server.register(countClicksRoute)
+server.register(clickLinkRoute)
 
 server.listen({ port: 3333, host: '0.0.0.0' }).then(() => {
   console.log('HTTP server running!')
