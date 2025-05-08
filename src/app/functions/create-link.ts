@@ -23,6 +23,7 @@ export async function createLink({ originalUrl, shorterUrl }: CreateLinkParams) 
     .values({
       originalUrl,
       shorterUrl,
+      accessCount: 0,
     })
     .returning()
 
