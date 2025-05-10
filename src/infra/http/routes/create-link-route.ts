@@ -6,9 +6,11 @@ import { z } from 'zod'
 export function createLinkRout(server: FastifyInstance) {
   const createLinkSchema = z.object({
     originalUrl: z.string().url('Original URL must be a valid URL'),
-    shorterUrl: z.string().min(1, 'Shorter URL cannot be empty'),
-    //.regex(/^[a-zA-Z0-9-_]+$/, 'Shorter URL can only contain letters, numbers, hyphens and underscores')
-    //.max(20, 'Shorter URL must be at most 20 characters'),
+    shorterUrl: z
+      .string()
+      .min(1, 'Shorter URL cannot be empty')
+      .regex(/^[a-zA-Z0-9-_]+$/, 'Shorter URL can only contain letters, numbers, hyphens and underscores')
+      .max(20, 'Shorter URL must be at most 20 characters'),
   })
 
   server.post(

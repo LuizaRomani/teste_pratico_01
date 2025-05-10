@@ -4,10 +4,10 @@ Nesse projeto back-end, será desenvolvido uma API para gerenciar o encurtamento
 ## Funcionalidades e Regras
 
 - [x] Deve ser possível criar um link
-    - [ ]  Não deve ser possível criar um link com URL encurtada mal formatada
+    - [x]  Não deve ser possível criar um link com URL encurtada mal formatada
     - [x]  Não deve ser possível criar um link com URL encurtada já existente
 - [x]  Deve ser possível deletar um link
-- [ ]  Deve ser possível obter a URL original por meio de uma URL encurtada
+- [x]  Deve ser possível obter a URL original por meio de uma URL encurtada
 - [x]  Deve ser possível listar todas as URL’s cadastradas
 - [x]  Deve ser possível incrementar a quantidade de acessos de um link
 - [ ]  Deve ser possível exportar os links criados em um CSV
