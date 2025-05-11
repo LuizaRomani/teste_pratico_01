@@ -1,9 +1,11 @@
-
+import { EmptyHomePage } from "./components/empty-home-page"
 
 export function App() {
 
   return (
-    <h1>Hello World!</h1>
+    <main className="h-full ">
+      <EmptyHomePage />
+    </main>
   )
 }
 

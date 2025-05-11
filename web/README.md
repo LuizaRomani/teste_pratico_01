@@ -1,3 +1,6 @@
+# [Front-End] Desafio Fase 1 - Brev.ly
+Nesse projeto front-end será desenvolvido uma aplicação React que, em conjunto com a API, permite o gerenciamento de URL’s encurtadas.
+
 ## Funcionalidades e Regras
 
 Assim como na API, temos as seguintes funcionalidades e regras:
@@ -17,3 +20,11 @@ Além disso, também temos algumas regras importantes específicas para o front-
 - [ ]  Siga o mais fielmente possível o layout do Figma;
 - [ ]  Trabalhe com elementos que tragam uma boa experiência ao usuário (`empty state`, ícones de carregamento, bloqueio de ações a depender do estado da aplicação);
 - [ ]  Foco na responsividade: essa aplicação deve ter um bom uso tanto em desktops quanto em celulares.
+
+## Páginas
+
+Essa aplicação possui 3 páginas:
+
+- A página raiz (`/`) que exibe o formulário de cadastro e a listagem dos links cadastrados;
+- A página de redirecionamento (`/:url-encurtada`) que busca o valor dinâmico da URL e faz a pesquisa na API por aquela URL encurtada;
+- A página de recurso não encontrado (qualquer página que não seguir o padrão acima) que é exibida caso o usuário digite o endereço errado ou a url encurtada informada não exista.
