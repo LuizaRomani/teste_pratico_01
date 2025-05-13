@@ -1,7 +1,7 @@
 export function NewLinkCard() {
   return (
-    <div className="bg-gray-100 rounded-lg w-[580px] min-h-[234px] p-8 flex flex-col gap-5 box-border ">
-      <h2 className="text-2xl font-bold text-gray-600 mb-2">Novo link</h2>
+    <div className="bg-gray-100 rounded-lg w-[380px] min-h-[340px] p-8 flex flex-col gap-5 box-border mb-36">
+      <h2 className="text-lg font-bold text-gray-600 mb-2">Novo Link</h2>
       <form className="flex flex-col gap-5">
         <div>
           <label className="block text-gray-600 mb-1 font-semibold">LINK ORIGINAL</label>
