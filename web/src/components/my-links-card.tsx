@@ -3,7 +3,7 @@ import { Link, Download } from "lucide-react";
 export function MyLinksCard() {
   return (
     <div
-      className="bg-gray-100 rounded-lg w-[580px] min-h-[234px] p-8 flex flex-col gap-5 box-border mb-[593px]"
+      className="bg-gray-100 rounded-lg w-[580px] h-[234px] p-8 flex flex-col gap-5 box-border mb-[593px] "
     >
       {/* Header */}
       <div className="flex justify-between items-center mb-2">

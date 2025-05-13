@@ -1,10 +1,10 @@
 export function NewLinkCard() {
   return (
-    <div className="bg-gray-100 rounded-lg w-[380px] min-h-[340px] p-8 flex flex-col gap-5 box-border mb-36">
+    <div className="bg-gray-100 rounded-lg w-[380px] h-[340px] p-8 flex flex-col gap-5 box-border mb-36 ">
       <h2 className="text-lg font-bold text-gray-600 mb-2">Novo Link</h2>
       <form className="flex flex-col gap-5">
         <div>
-          <label className="block text-gray-600 mb-1 font-semibold">LINK ORIGINAL</label>
+          <label className="block text-xs text-gray-600 mb-1 ">LINK ORIGINAL</label>
           <input
             type="text"
             className="w-full p-3 border border-gray-200 rounded-md bg-gray-50 text-gray-600"
@@ -13,7 +13,7 @@ export function NewLinkCard() {
           />
         </div>
         <div>
-          <label className="block text-gray-600 mb-1 font-semibold">LINK ENCURTADO</label>
+          <label className="block text-xs text-gray-600 mb-1 ">LINK ENCURTADO</label>
           <input
             type="text"
             className="w-full p-3 border border-gray-200 rounded-md bg-gray-50 text-gray-600"
