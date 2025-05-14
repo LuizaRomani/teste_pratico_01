@@ -2,8 +2,8 @@ import logoUrl from "../utils/Logo.svg";
 
 export function LogoHeader() {
 	return (
-		<div className="mt-20 left-44">
-			<img src={logoUrl} alt="brev.ly logo" width={96.67} height={24} />
+		<div className="w-full flex justify-center lg:justify-start mt-8 lg:mt-20">
+			<img src={logoUrl} alt="brev.ly logo" className="w-[96.67px] h-6" />
 		</div>
 	);
 }
