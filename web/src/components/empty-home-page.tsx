@@ -4,13 +4,11 @@ import { MyLinksCard } from "./my-links-card";
 
 export function EmptyHomePage() {
 	return (
-		<div className="bg-gray-200 flex flex-col items-center justify-center p-6 relative">
-			
+		<div className="bg-gray-200 flex flex-col items-center justify-center p-6 ">
 			<LogoHeader />
-
-			<div className="flex flex-col md:flex-row gap-8 w-full max-w-5xl mt-36">
+			<div className="flex flex-col md:flex-row items-start gap-8 w-full max-w-5xl mt-36">
 				<NewLinkCard />
-        <MyLinksCard />
+				<MyLinksCard />
 			</div>
 		</div>
 	);
