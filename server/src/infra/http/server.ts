@@ -26,7 +26,10 @@ server.setErrorHandler((error, request, reply) => {
   return reply.status(500).send({ message: 'Internal server error.' })
 })
 
-server.register(fastifyCors, { origin: '*' })
+server.register(fastifyCors, {
+  origin: '*',
+  methods: ['GET', 'POST', 'DELETE'],
+})
 
 server.register(createLinkRout)
 server.register(listLinksRoute)

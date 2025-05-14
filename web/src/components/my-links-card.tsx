@@ -1,6 +1,48 @@
-import { Link, Download } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link, Download, Copy, Trash } from "lucide-react";
+import { getAllLinks } from "../http/list-all-links";
+import { deleteLink } from "../http/delete-link";
+
+interface LinkItem {
+	id: string;
+	originalUrl: string;
+	shorterUrl: string;
+	accessCount: number;
+	createdAt: string;
+}
 
 export function MyLinksCard() {
+	const [links, setLinks] = useState<LinkItem[]>([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState("");
+	const [copiedId, setCopiedId] = useState<string | null>(null);
+	const [deletingId, setDeletingId] = useState<string | null>(null);
+
+	useEffect(() => {
+		getAllLinks()
+			.then(setLinks)
+			.catch(() => setError("Erro ao carregar os links"))
+			.finally(() => setLoading(false));
+	}, []);
+
+	const handleCopy = async (link: LinkItem) => {
+		await navigator.clipboard.writeText(`http://localhost:3333/${link.shorterUrl}`);
+		setCopiedId(link.id);
+		setTimeout(() => setCopiedId(null), 1200);
+	};
+
+	const handleDelete = async (id: string) => {
+		setDeletingId(id);
+		try {
+			await deleteLink(id);
+			setLinks(links => links.filter(link => link.id !== id));
+		} catch {
+			alert('Erro ao deletar o link');
+		} finally {
+			setDeletingId(null);
+		}
+	};
+
 	return (
 		<div className="bg-gray-100 rounded-lg w-full lg:w-[580px] p-6 lg:p-8 flex flex-col gap-5">
 			<div className="flex justify-between items-center">
@@ -14,13 +56,55 @@ export function MyLinksCard() {
 				</button>
 			</div>
 			<div className="flex-1">
-				<div className="border-t border-gray-200" />
-				<div className="flex flex-col items-center justify-center h-[120px]">
-					<Link className="text-gray-400 mb-3" size={28} />
-					<span className="text-gray-400 text-xs text-center">
-						AINDA NÃO EXISTEM LINKS CADASTRADOS
-					</span>
-				</div>
+				<div className="border-t border-gray-200 mb-2" />
+				{loading ? (
+					<div className="flex flex-col items-center justify-center h-[120px] text-gray-400 text-sm">Carregando...</div>
+				) : error ? (
+					<div className="flex flex-col items-center justify-center h-[120px] text-danger text-sm">{error}</div>
+				) : links.length === 0 ? (
+					<div className="flex flex-col items-center justify-center h-[120px]">
+						<Link className="text-gray-400 mb-3" size={28} />
+						<span className="text-gray-400 text-xs text-center">
+							AINDA NÃO EXISTEM LINKS CADASTRADOS
+						</span>
+					</div>
+				) : (
+					<ul className="flex flex-col gap-2">
+						{links.map(link => (
+							<li key={link.id} className="flex items-center justify-between bg-gray-100 rounded-md px-4 py-2 border border-gray-200">
+								<div className="flex flex-col min-w-0">
+									<a
+										href={`http://localhost:3333/${link.shorterUrl}`}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="text-blue-700 font-medium truncate hover:underline"
+									>
+										brev.ly/{link.shorterUrl}
+									</a>
+									<span className="text-xs text-gray-500 truncate">{link.originalUrl}</span>
+								</div>
+								<div className="flex items-center gap-2 min-w-fit">
+									<span className="text-gray-600 text-sm whitespace-nowrap mr-2">{link.accessCount} acessos</span>
+									<button
+										className={`bg-gray-200 hover:bg-gray-300 rounded-md p-2 transition-colors ${copiedId === link.id ? 'ring-2 ring-blue-500' : ''}`}
+										title="Copiar link"
+										onClick={() => handleCopy(link)}
+									>
+										<Copy className={`w-5 h-5 ${copiedId === link.id ? 'text-blue-600' : 'text-gray-600'}`} />
+									</button>
+									<button
+										className={`bg-gray-200 hover:bg-gray-300 rounded-md p-2 transition-colors ${deletingId === link.id ? 'opacity-50' : ''}`}
+										title="Deletar link"
+										onClick={() => handleDelete(link.id)}
+										disabled={deletingId === link.id}
+									>
+										<Trash className="w-5 h-5 text-gray-600" />
+									</button>
+								</div>
+							</li>
+						))}
+					</ul>
+				)}
 			</div>
 		</div>
 	);

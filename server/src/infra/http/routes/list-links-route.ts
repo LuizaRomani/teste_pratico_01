@@ -18,6 +18,7 @@ export function listLinksRoute(server: FastifyInstance) {
                   id: z.string(),
                   originalUrl: z.string(),
                   shorterUrl: z.string(),
+                  accessCount: z.number(),
                   createdAt: z.date(),
                 })
               ),
