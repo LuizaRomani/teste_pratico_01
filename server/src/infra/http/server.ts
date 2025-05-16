@@ -6,6 +6,7 @@ import { countClicksRoute } from './routes/count-clicks-route'
 import { createLinkRout } from './routes/create-link-route'
 import { deleteLinkRoute } from './routes/delete-link-route'
 import { getOriginalUrlRoute } from './routes/get-original-link-route'
+import { getValidateUrlRoute } from './routes/valide-url'
 import { listLinksRoute } from './routes/list-links-route'
 
 const server = fastify()
@@ -37,6 +38,7 @@ server.register(deleteLinkRoute)
 server.register(countClicksRoute)
 server.register(clickLinkRoute)
 server.register(getOriginalUrlRoute)
+server.register(getValidateUrlRoute)
 
 server.listen({ port: 3333, host: '0.0.0.0' }).then(() => {
   console.log('HTTP server running!')

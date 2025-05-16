@@ -9,7 +9,7 @@ export function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path=":shortUrl" element={<RedirectPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="not-found" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
