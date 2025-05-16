@@ -5,32 +5,12 @@ import LogoRedirect from '../components/logo-redirect';
 export default function RedirectPage() {
   const { shortUrl } = useParams();
   const navigate = useNavigate();
-  const [originalUrl, setOriginalUrl] = useState<string | null>(null);
-  const [error, setError] = useState(false);
+  const [error] = useState(false);
 
   useEffect(() => {
     if (!shortUrl) return;
-    fetch(`http://localhost:3333/${shortUrl}`)
-      .then(async (res) => {
-        if (res.status === 404) throw new Error('not found');
-        const data = await res.json().catch(() => null);
-        if (data && data.originalUrl) {
-          setOriginalUrl(data.originalUrl);
-        } else {
-          window.location.href = res.url;
-        }
-      })
-      .catch(() => setError(true));
+    window.location.href = `http://localhost:3333/${shortUrl}`;
   }, [shortUrl]);
-
-  useEffect(() => {
-    if (originalUrl) {
-      const timeout = setTimeout(() => {
-        window.location.href = originalUrl;
-      }, 1800);
-      return () => clearTimeout(timeout);
-    }
-  }, [originalUrl]);
 
   if (error) {
     navigate('/not-found', { replace: true });
@@ -45,14 +25,6 @@ export default function RedirectPage() {
         </div>
         <h1 className="text-2xl font-bold text-gray-600 mb-2">Redirecionando...</h1>
         <p className="text-gray-500 text-center mb-2">O link será aberto automaticamente em alguns instantes.</p>
-        <p className="text-gray-500 text-center text-sm">
-          Não foi redirecionado?{' '}
-          {originalUrl ? (
-            <a href={originalUrl} className="text-blue-base underline">Acesse aqui</a>
-          ) : (
-            <span className="text-gray-400">Acesse aqui</span>
-          )}
-        </p>
       </div>
     </div>
   );
