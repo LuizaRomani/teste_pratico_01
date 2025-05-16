@@ -61,18 +61,22 @@ export function NewLinkCard() {
 					<label className="text-xs text-gray-500 mb-2 block">
 						LINK ENCURTADO
 					</label>
-					<div className="flex items-center w-full">
-						<span className={`px-3 py-3 border border-r-0 border-gray-300 rounded-l-md bg-gray-100 text-gray-500 text-sm select-none ${errorShort ? 'ring-2 ring-danger border-danger' : ''}`}>brev.ly/</span>
+					<div className="relative w-full">
+						<span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm select-none pointer-events-none">
+							Brev.ly/
+						</span>
 						<input
 							type="text"
-							className={`flex-1 p-3 border border-l-0 border-gray-300 rounded-r-md bg-gray-100 text-gray-600 placeholder:text-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-base focus:border-blue-base transition-all ${errorShort ? 'ring-2 ring-danger border-danger' : ''}`}
+							className={`w-full pl-[61px] pr-3 py-3 border border-gray-300 rounded-md bg-gray-100 text-gray-600 placeholder:text-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-base focus:border-blue-base transition-all ${errorShort ? 'ring-2 ring-danger border-danger' : ''}`}
 							placeholder="Linkedin-Profile"
 							value={shortUrl}
 							onChange={e => setShortUrl(e.target.value)}
 							disabled={loading}
 						/>
 					</div>
+
 				</div>
+
 				<button
 					type="submit"
 					className={`w-full h-12 rounded-md text-md font-semibold transition-colors ${bothFilled && !loading ? "bg-blue-dark hover:bg-blue-700 text-white cursor-pointer" : "bg-blue-base text-white cursor-not-allowed opacity-50"}`}

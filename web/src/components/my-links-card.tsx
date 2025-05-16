@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, Download, Copy, Trash } from "lucide-react";
 import { getAllLinks } from "../http/list-all-links";
 import { deleteLink } from "../http/delete-link";
+import { incrementAccessCount } from "../http/increment-access-count";
 
 interface LinkItem {
 	id: string;
@@ -43,6 +44,23 @@ export function MyLinksCard() {
 		}
 	};
 
+	const handleLinkClick = async (e: React.MouseEvent<HTMLAnchorElement>, link: LinkItem) => {
+		e.preventDefault();
+		try {
+			const response = await incrementAccessCount(link.id);
+			setLinks(links => links.map(l => 
+				l.id === link.id 
+					? { ...l, accessCount: response.data.accessCount }
+					: l
+			));
+			window.open(`http://localhost:3333/${link.shorterUrl}`, '_blank');
+		} catch (error) {
+			console.error('Failed to increment access count:', error);
+			// Still open the link even if increment fails
+			window.open(`http://localhost:3333/${link.shorterUrl}`, '_blank');
+		}
+	};
+
 	return (
 		<div className="bg-gray-100 rounded-lg w-full lg:w-[580px] p-6 lg:p-8 flex flex-col gap-5">
 			<div className="flex justify-between items-center">
@@ -78,6 +96,7 @@ export function MyLinksCard() {
 										target="_blank"
 										rel="noopener noreferrer"
 										className="text-blue-700 font-medium truncate hover:underline"
+										onClick={(e) => handleLinkClick(e, link)}
 									>
 										brev.ly/{link.shorterUrl}
 									</a>

@@ -1,7 +1,5 @@
-import { config } from "../config";
-
 export async function incrementAccessCount(id: string) {
-  const response = await fetch(`${config.apiBaseUrl}/links/${id}/access`, {
+  const response = await fetch(`http://localhost:3333/links/${id}/access`, {
     method: "POST",
   });
 
@@ -10,4 +8,4 @@ export async function incrementAccessCount(id: string) {
     throw data;
   }
   return data;
-} 
+}
