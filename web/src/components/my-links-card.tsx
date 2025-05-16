@@ -4,6 +4,8 @@ import { getAllLinks } from "../http/list-all-links";
 import { deleteLink } from "../http/delete-link";
 import { incrementAccessCount } from "../http/increment-access-count";
 
+const FRONTEND_BASE_URL = import.meta.env.VITE_FRONTEND_BASE_URL || "http://localhost:5173";
+
 interface LinkItem {
 	id: string;
 	originalUrl: string;
@@ -27,7 +29,7 @@ export function MyLinksCard() {
 	}, []);
 
 	const handleCopy = async (link: LinkItem) => {
-		await navigator.clipboard.writeText(`http://localhost:3333/${link.shorterUrl}`);
+		await navigator.clipboard.writeText(`${FRONTEND_BASE_URL}/${link.shorterUrl}`);
 		setCopiedId(link.id);
 		setTimeout(() => setCopiedId(null), 1200);
 	};
@@ -53,11 +55,10 @@ export function MyLinksCard() {
 					? { ...l, accessCount: response.data.accessCount }
 					: l
 			));
-			window.open(`http://localhost:3333/${link.shorterUrl}`, '_blank');
+			window.open(`${FRONTEND_BASE_URL}/${link.shorterUrl}`, '_blank');
 		} catch (error) {
 			console.error('Failed to increment access count:', error);
-			// Still open the link even if increment fails
-			window.open(`http://localhost:3333/${link.shorterUrl}`, '_blank');
+			window.open(`${FRONTEND_BASE_URL}/${link.shorterUrl}`, '_blank');
 		}
 	};
 
@@ -92,7 +93,7 @@ export function MyLinksCard() {
 							<li key={link.id} className="flex items-center justify-between bg-gray-100 rounded-md px-4 py-2 border border-gray-200">
 								<div className="flex flex-col min-w-0">
 									<a
-										href={`http://localhost:3333/${link.shorterUrl}`}
+										href={`${FRONTEND_BASE_URL}/${link.shorterUrl}`}
 										target="_blank"
 										rel="noopener noreferrer"
 										className="text-blue-700 font-medium truncate hover:underline"
