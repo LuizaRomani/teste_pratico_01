@@ -7,12 +7,12 @@ export default function NotFoundPage() {
         <div className="flex justify-center">
           <LogoError />
         </div>
-        <h1 className="text-2xl font-bold text-gray-800">
+        <h1 className="text-2xl font-bold text-gray-600">
           Link não encontrado
         </h1>
-        <p className="text-gray-600 text-sm sm:text-base">
+        <p className="text-gray-500 text-md md:text-base">
           O link que você está tentando acessar não existe, foi removido ou é uma URL inválida. Saiba mais em{' '}
-          <a href="https://brev.ly" className="text-blue-600 underline">
+          <a href="https://brev.ly" className="text-blue-base underline">
             brev.ly
           </a>.
         </p>

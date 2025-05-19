@@ -4,10 +4,10 @@ import { MyLinksCard } from "./my-links-card";
 
 export function StandartHomePage() {
 	return (
-		<div className="min-h-screen bg-gray-200 flex flex-col items-center">
-			<div className="w-full max-w-[1200px] px-4 sm:px-6 lg:px-12 space-y-7 mt-32">
+		<div className="min-h-screen flex flex-col items-center justify-center bg-gray-200 px-4">
+			<div className="w-full max-w-5xl mx-auto flex flex-col space-y-7">
 				<LogoHeader />
-				<div className="flex flex-col lg:flex-row items-start gap-8 w-full mt-16 lg:mt-36">
+				<div className="flex flex-col lg:flex-row items-start gap-8 w-full mt-8 lg:mt-20">
 					<NewLinkCard />
 					<MyLinksCard />
 				</div>

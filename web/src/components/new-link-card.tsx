@@ -79,7 +79,7 @@ export function NewLinkCard() {
 
 				<button
 					type="submit"
-					className={`w-full h-12 rounded-md text-md font-semibold transition-colors ${bothFilled && !loading ? "bg-blue-dark hover:bg-blue-700 text-white cursor-pointer" : "bg-blue-base text-white cursor-not-allowed opacity-50"}`}
+					className={`w-full h-12 rounded-md text-md font-semibold transition-colors ${bothFilled && !loading ? "bg-blue-dark hover:bg-blue-base text-white cursor-pointer" : "bg-blue-base text-white cursor-not-allowed opacity-50"}`}
 					disabled={!bothFilled || loading}
 				>
 					{loading ? "Salvando..." : "Salvar link"}

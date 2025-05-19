@@ -113,7 +113,7 @@ export function MyLinksCard() {
 											href={`${FRONTEND_BASE_URL}/${link.shorterUrl}`}
 											target="_blank"
 											rel="noopener noreferrer"
-											className="text-blue-700 font-medium truncate hover:underline"
+											className="text-blue-base font-medium truncate hover:underline"
 											onClick={(e) => handleLinkClick(e, link)}
 										>
 											brev.ly/{link.shorterUrl}
@@ -123,11 +123,11 @@ export function MyLinksCard() {
 									<div className="flex items-center gap-2 min-w-fit">
 										<span className="text-gray-600 text-sm whitespace-nowrap mr-2">{link.accessCount} acessos</span>
 										<button
-											className={`bg-gray-200 hover:bg-gray-300 rounded-md p-2 transition-colors ${copiedId === link.id ? 'ring-2 ring-blue-500' : ''}`}
+											className={`bg-gray-200 hover:bg-gray-300 rounded-md p-2 transition-colors ${copiedId === link.id ? 'ring-2 ring-blue-base' : ''}`}
 											title="Copiar link"
 											onClick={() => handleCopy(link)}
 										>
-											<Copy className={`w-5 h-5 ${copiedId === link.id ? 'text-blue-600' : 'text-gray-600'}`} />
+											<Copy className={`w-5 h-5 ${copiedId === link.id ? 'text-blue-base' : 'text-gray-600'}`} />
 										</button>
 										<button
 											className={`bg-gray-200 hover:bg-gray-300 rounded-md p-2 transition-colors ${deletingId === link.id ? 'opacity-50' : ''}`}
