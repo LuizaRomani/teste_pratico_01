@@ -82,9 +82,9 @@ export function MyLinksCard() {
 			<div className="flex justify-between items-center">
 				<h2 className="text-lg font-bold text-gray-600">Meus Links</h2>
 				<button
-					className={`bg-gray-200 hover:bg-gray-300 text-gray-500 py-2 px-4 rounded-md flex items-center gap-2 font-sans transition-colors ${exporting ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+					className={`bg-gray-200 hover:bg-gray-300 text-gray-500 py-2 px-4 rounded-md flex items-center gap-2 font-sans transition-colors ${(exporting || links.length === 0) ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
 					onClick={handleExport}
-					disabled={exporting}
+					disabled={exporting || links.length === 0}
 				>
 					<Download className="text-gray-600" size={20} />
 					{exporting ? 'Exportando...' : 'Baixar CSV'}
