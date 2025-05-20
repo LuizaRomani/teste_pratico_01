@@ -1,5 +1,7 @@
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 export async function incrementAccessCount(id: string) {
-  const response = await fetch(`http://localhost:3333/links/${id}/access`, {
+  const response = await fetch(`${BACKEND_URL}/links/${id}/access`, {
     method: "POST",
   });
 

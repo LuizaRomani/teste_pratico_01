@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import LogoRedirect from '../components/logo-redirect';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 export default function RedirectPage() {
   const { shortUrl } = useParams();
   const navigate = useNavigate();
@@ -9,7 +11,7 @@ export default function RedirectPage() {
   useEffect(() => {
     if (!shortUrl) return;
 
-    fetch(`http://localhost:3333/validate/${shortUrl}`)
+    fetch(`${BACKEND_URL}/validate/${shortUrl}`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Invalid link');
@@ -17,7 +19,7 @@ export default function RedirectPage() {
         return response.json();
       })
       .then(() => {
-        window.location.href = `http://localhost:3333/${shortUrl}`;
+        window.location.href = `${BACKEND_URL}/${shortUrl}`;
       })
       .catch(() => {
         navigate('/not-found', { replace: true });
@@ -34,7 +36,7 @@ export default function RedirectPage() {
         <p className="text-md text-gray-500 text-center mb-2">
           O link será aberto automaticamente em alguns instantes.
           Não foi redirecionado?{' '}
-          <a href={`http://localhost:3333/${shortUrl}`} className="text-blue-base underline">Acesse aqui</a>
+          <a href={`${BACKEND_URL}/${shortUrl}`} className="text-blue-base underline">Acesse aqui</a>
         </p>
       </div>
     </div>

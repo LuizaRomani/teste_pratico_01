@@ -1,5 +1,7 @@
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 export async function exportLinks() {
-  const response = await fetch("http://localhost:3333/links/export", {
+  const response = await fetch(`${BACKEND_URL}/links/export`, {
     method: "POST",
   });
 

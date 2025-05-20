@@ -5,7 +5,7 @@ import { deleteLink } from "../http/delete-link";
 import { incrementAccessCount } from "../http/increment-access-count";
 import { exportLinks } from "../http/export-links";
 
-const FRONTEND_BASE_URL = import.meta.env.VITE_FRONTEND_BASE_URL || "http://localhost:5173";
+const FRONTEND_BASE_URL = import.meta.env.VITE_FRONTEND_URL;
 
 interface LinkItem {
 	id: string;
